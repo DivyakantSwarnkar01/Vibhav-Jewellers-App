@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8EDEB"
+    tools:context=".NewGoldRate">
+
+    <!-- Header (Same as Before) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#FEC5BB"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="75dp"
+            android:layout_height="68dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/logoone" />
+
+        <ImageView
+            android:id="@+id/refreshIcon"
+            android:layout_width="77dp"
+            android:layout_height="71dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/logoImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/refreshicon" />
+
+        <TextView
+            android:id="@+id/appTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vibhav Jewellers"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/refreshIcon"
+            app:layout_constraintStart_toEndOf="@+id/logoImage"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Page Title -->
+    <TextView
+        android:id="@+id/pageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="सोने का ज्वैलरी भाव"
+        android:textColor="#D00000"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Today's Gold Rate Display -->
+    <TextView
+        android:id="@+id/todayRate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="#FEC5BB"
+        android:gravity="center"
+        android:text="आज का सोना भाव: लोड हो रहा है..."
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/pageTitle"
+        app:layout_constraintStart_toStartOf="@+id/pageTitle"
+        app:layout_constraintTop_toBottomOf="@+id/pageTitle" />
+
+    <!-- Input Section -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todayRate">
+
+        <!-- Weight Input -->
+        <TextView
+            android:id="@+id/weightLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="वज़न (ग्राम में)"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/weightInput"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_background"
+            android:hint="0.00"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@id/weightLabel"
+            app:layout_constraintTop_toBottomOf="@id/weightLabel" />
+
+        <!-- Making Charge -->
+        <TextView
+            android:id="@+id/makingChargeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="शुद्धता (%)"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/weightInput"
+            app:layout_constraintTop_toTopOf="@id/weightLabel" />
+
+        <EditText
+            android:id="@+id/makingChargeInput"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_background"
+            android:hint="0%"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@id/makingChargeLabel"
+            app:layout_constraintTop_toBottomOf="@id/makingChargeLabel" />
+
+        <!-- GST -->
+        <TextView
+            android:id="@+id/gstLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="GST/Making Charge(%)"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weightInput" />
+
+        <EditText
+            android:id="@+id/gstInput"
+            android:layout_width="207dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_background"
+            android:hint="3%"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@id/gstLabel"
+            app:layout_constraintTop_toBottomOf="@id/gstLabel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Price Display Section -->
+
+    <!-- Calculate Button -->
+
+    <!-- Back Button -->
+
+    <TextView
+        android:id="@+id/priceLabel"
+        android:layout_width="137dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="कुल मूल्य:"
+        android:textAlignment="center"
+        android:textColor="#D00000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/calculateButton"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/calculateButton"
+        app:layout_constraintTop_toBottomOf="@+id/calculateButton" />
+
+    <TextView
+        android:id="@+id/priceValue"
+        android:layout_width="233dp"
+        android:layout_height="65dp"
+        android:text="₹ 0.00"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/calculateButton"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="@+id/calculateButton"
+        app:layout_constraintTop_toBottomOf="@+id/priceLabel" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FEC5BB"
+        android:text="भाव करें"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_back_arrow"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8EDEB"
-    tools:context=".OldGoldRate">
+    tools:context=".NewSilverRate">
 
     <!-- Header -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,7 +54,7 @@
         android:id="@+id/pageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="पुराने सोने का भाव"
+        android:text="नई चांदी भाव"
         android:textColor="#D00000"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/headerLayout"
         android:layout_marginTop="16dp"/>
 
-    <!-- Today's Gold Rate Display -->
+    <!-- Today's Silver Rate Display -->
     <TextView
         android:id="@+id/todayRate"
         android:layout_width="match_parent"
@@ -71,7 +71,7 @@
         android:layout_marginTop="8dp"
         android:background="#FEC5BB"
         android:gravity="center"
-        android:text="आज का सोना भाव: लोड हो रहा है..."
+        android:text="आज का चांदी भाव: लोड हो रहा है..."
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/pageTitle" />
@@ -130,39 +130,16 @@
             app:layout_constraintStart_toStartOf="@id/purityLabel"
             app:layout_constraintTop_toBottomOf="@id/purityLabel" />
 
-        <!-- Discount Input -->
-        <TextView
-            android:id="@+id/discountLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="छूट (%)"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/weightInput" />
-
-        <EditText
-            android:id="@+id/discountInput"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edittext_background"
-            android:hint="0%"
-            android:inputType="numberDecimal"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@id/discountLabel"
-            app:layout_constraintTop_toBottomOf="@id/discountLabel" />
-
         <!-- GST Input -->
         <TextView
             android:id="@+id/gstLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
             android:text="GST (%)"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/discountInput"
-            app:layout_constraintTop_toTopOf="@id/discountLabel" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weightInput" />
 
         <EditText
             android:id="@+id/gstInput"
@@ -175,7 +152,6 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@id/gstLabel"
             app:layout_constraintTop_toBottomOf="@id/gstLabel" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Calculate Button -->
@@ -220,6 +196,7 @@
         app:layout_constraintStart_toStartOf="@+id/calculateButton"
         app:layout_constraintEnd_toEndOf="@+id/calculateButton" />
 
+    <!-- Back Button -->
     <ImageView
         android:id="@+id/backButton"
         android:layout_width="50dp"
@@ -227,6 +204,5 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_back_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

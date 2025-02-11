@@ -9,43 +9,38 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NewGoldRate extends AppCompatActivity {
+public class NewSilverRate extends AppCompatActivity {
 
     // UI Components
     private EditText weightInput, purityInput, gstInput;
     private TextView priceValue;
     private Button calculateButton;
-    private ImageView backButton; // Arrow button for navigation
+    private ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_gold_rate);
+        setContentView(R.layout.activity_new_silver_rate);
 
         // Initialize UI components
         weightInput = findViewById(R.id.weightInput);
-        purityInput = findViewById(R.id.makingChargeInput); // Your custom ID
+        purityInput = findViewById(R.id.purityInput);
         gstInput = findViewById(R.id.gstInput);
         priceValue = findViewById(R.id.priceValue);
         calculateButton = findViewById(R.id.calculateButton);
-        backButton = findViewById(R.id.backButton); // Initialize the back button
+        backButton = findViewById(R.id.backButton);
 
-        // Set default purity to 100%
-        purityInput.setText("100");
-        gstInput.setText("10"); // <-- Default value added here
+        // Set default values
+        purityInput.setText("100"); // Default purity
+        gstInput.setText("10"); // Default GST
 
         // Set click listener for calculate button
         calculateButton.setOnClickListener(v -> calculatePrice());
 
         // Set click listener for back button
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate back to MainActivity
-                Intent intent = new Intent(NewGoldRate.this, MainActivity.class);
-                startActivity(intent); // Start MainActivity
-                finish(); // Close the current activity
-            }
+        backButton.setOnClickListener(v -> {
+            startActivity(new Intent(NewSilverRate.this, MainActivity.class));
+            finish();
         });
     }
 
@@ -63,12 +58,12 @@ public class NewGoldRate extends AppCompatActivity {
 
         try {
             // Parse values
-            double weight = Double.parseDouble(weightStr);
+            double weightInGrams = Double.parseDouble(weightStr);
             double purity = Double.parseDouble(purityStr);
             double gst = Double.parseDouble(gstStr);
 
             // Validate ranges
-            if (weight <= 0) {
+            if (weightInGrams <= 0) {
                 priceValue.setText("वजन शून्य से अधिक होना चाहिए");
                 return;
             }
@@ -82,8 +77,9 @@ public class NewGoldRate extends AppCompatActivity {
             }
 
             // Calculation Logic
-            double goldRatePerGram = 84000.0 / 10; // ₹8,400 per gram
-            double pureValue = weight * goldRatePerGram * (purity / 100);
+            double silverRatePerKg = 99500; // ₹84,000 per kg (example rate)
+            double weightInKgs = weightInGrams / 1000; // Convert grams to kgs
+            double pureValue = weightInKgs * silverRatePerKg * (purity / 100);
             double totalPrice = pureValue * (1 + (gst / 100));
 
             // Display result
